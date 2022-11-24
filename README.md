@@ -25,13 +25,21 @@ This library, when paired with an Arduino, performs many of the same functions a
 
 I bought a broken Alesis A6 Andromeda, and wanted to try fixing it by re-flashing its firmware without doing any soldering, because I'm bad at soldering. Read about that journey [on my blog](http://blog.petersobot.com/preview/c5fGNB81gvwoJvi7SchKEK/).
 
+## How?
+
+I read the [MCF5307 data sheet](https://www.nxp.com/docs/en/data-sheet/MCF5307BUM.pdf) (484 pages) very carefully. It documents how to connect to a Coldfire BDM port from first principles.
+
+See the top of [arduino-coldfire-bdm.ino](https://github.com/psobot/arduino-coldfire-bdm/blob/main/arduino_coldfire_bdm/arduino-coldfire-bdm.ino) to figure out which pins to connect between the Arduino and your Coldfire's debug port.
+
 ## Can I use this for other things?
 
 Probably. There are certain assumptions made (especially around interfacing with Flash or RAM) that apply only to the Andromeda, and may not be useful for other devices. Pull requests to make this code more generic would be welcomed.
 
 ## What if I brick my device?
 
-Here's the license; I take no responsibility if this software is misused. You should probably read it carefully first.
+Here's the license; I take no responsibility if this software is misused. You should probably read the software carefully first.
+
+Also; I tested this with a 5V Arduino on a 3.3V Coldfire CPU. It seemed to work just fine. That might fry your device; your mileage may vary.
 
 ```
 Copyright (c) 2022 Peter Sobot
