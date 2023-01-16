@@ -6,6 +6,32 @@ An interface to Motorola® Coldfire processors' Background Debug Interface (BDM)
 pip install arduino-coldfire-bdm
 ```
 
+### Usage
+
+After running `pip install arduino-coldfire-bdm` on a machine with a working Python 3 installation, use the `arduino-coldfire-bdm` command-line program:
+
+```
+usage: arduino-coldfire-bdm [-h] [--dry-run] [--show-commands] [--serial-port SERIAL_PORT] [--baud-rate BAUD_RATE] {dump_memory,trace_execution,load_flash,sram_test} ...
+
+Communicate with an attached Coldfire V3 board (and maybe other versions too) to act as a simple debugger, via an Arduino serial connection.
+
+options:
+  -h, --help            show this help message and exit
+  --dry-run             If passed, don't actually connect to a serial port; just queue up commands that would have otherwise been sent to an attached Arduino.
+  --show-commands       If passed, print out a listing of every command sent to the Arduino.
+  --serial-port SERIAL_PORT
+                        The file path of the serial port to connect to.
+  --baud-rate BAUD_RATE
+                        The baud rate to use when connecting to the Arduino over serial. Must match what the Arduino expects.
+
+commands:
+  {dump_memory,trace_execution,load_flash,sram_test}
+    dump_memory         Dump memory.
+    trace_execution     Begin execution and print out the program counter and registers before every instruction.
+    load_flash          Erase an attached Flash chip and load in new contents from a file.
+    sram_test           Test SRAM attached to the Coldfire. Expects exactly 1MB of RAM, attached via chip-select port 1, mapped at 0x00200000.
+```
+
 ## What?
 
 A long long time ago (the mid-1990s), Motorola created a series of CPUs derived from the 68k architecture, called the Coldfire. These processors are largely obsolete today, but are still found in certain industrial equipment and embedded devices released around that time; including some vintage synthesizers, like [the Alesis A6 Andromeda](https://www.alesis.com/products/view/a6-andromeda).
