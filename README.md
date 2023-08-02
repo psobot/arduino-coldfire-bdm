@@ -8,7 +8,12 @@ pip install arduino-coldfire-bdm
 
 ### Usage
 
-After running `pip install arduino-coldfire-bdm` on a machine with a working Python 3 installation, use the `arduino-coldfire-bdm` command-line program:
+1. Ensure you have a [working Python 3 installation](https://python.org/download).
+2. Run `pip install arduino-coldfire-bdm` on the command line to install this package.
+3. Connect an Arduino to a Motorola Coldfire via its debug pins. See [arduino-coldfire-bdm.ino](https://github.com/psobot/arduino-coldfire-bdm/blob/main/arduino_coldfire_bdm/arduino-coldfire-bdm.ino) for suggested pin mappings. (Ensure the Coldfire board is powered up independently; the Arduino does not supply power to the Coldfire.)
+4. Use [the Arduino IDE](https://arduino.cc/en/software) to compile and upload [arduino-coldfire-bdm.ino](https://github.com/psobot/arduino-coldfire-bdm/blob/main/arduino_coldfire_bdm/arduino-coldfire-bdm.ino) to your Arduino.
+    - Note that you may need to change the pin numbers at the top of the script depending on your Arduino and the pins you used to connect to the Coldfire.
+5. On the command line (Terminal.app, Command Prompt on Windows, etc), run `arduino-coldfire-bdm` (or, if that doesn't work, `python3 -m arduino_coldfire_bdm.command_line`) to invoke the command line program. You should see the following help text:
 
 ```
 usage: arduino-coldfire-bdm [-h] [--dry-run] [--show-commands] [--serial-port SERIAL_PORT] [--baud-rate BAUD_RATE] {dump_memory,trace_execution,load_flash,sram_test} ...
@@ -31,6 +36,8 @@ commands:
     load_flash          Erase an attached Flash chip and load in new contents from a file.
     sram_test           Test SRAM attached to the Coldfire. Expects exactly 1MB of RAM, attached via chip-select port 1, mapped at 0x00200000.
 ```
+
+6. Select the appropriate `--serial-port` to use to connect to your Arduino, and run one of the commands.
 
 ## What?
 
